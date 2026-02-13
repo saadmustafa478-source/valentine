@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Marym ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Playfair Display',serif;
+    background:black;
+    color:white;
+    overflow:hidden;
+}
+
+/* Night sky */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at top,#0b1d3a,#000 70%);
+    z-index:-3;
+}
+
+/* Moon */
+.moon{
+    position:fixed;
+    top:10%;
+    right:15%;
+    width:120px;
+    height:120px;
+    background:radial-gradient(circle,#fff,#ddd,#aaa);
+    border-radius:50%;
+    box-shadow:0 0 40px #fff;
+    animation:moonFloat 8s infinite ease-in-out;
+    z-index:-1;
+}
+@keyframes moonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+/* Netflix intro */
+#intro{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:3em;
+    letter-spacing:8px;
+    animation:introFade 4s forwards;
+    z-index:999;
+}
+@keyframes introFade{
+    0%{opacity:1}
+    80%{opacity:1}
+    100%{opacity:0;visibility:hidden}
+}
+
+/* Video background */
+video{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    z-index:-1;
+}
+
+/* Card */
+.card{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(0,0,0,0.7);
+    border:2px solid gold;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 40px gold;
+}
+.card h1{font-size:2.2em;margin-bottom:30px}
+
+button{
+    padding:15px 35px;
+    font-size:1.2em;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    margin:10px;
+}
+#yes{background:gold;color:black}
+#no{background:#800;color:white;position:absolute}
+
+/* Rose fall */
+@keyframes roseFall{
+    to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* Envelope */
+#envelopePage{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle,#300,#000);
+    justify-content:center;
+    align-items:center;
+}
+.envelope{
+    width:260px;
+    height:180px;
+    background:#fff;
+    border-radius:10px;
+    position:relative;
+    cursor:pointer;
+}
+.wax{
+    width:60px;
+    height:60px;
+    background:darkred;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.rose{
+    position:absolute;
+    font-size:2em;
+    animation:rosePulse 4s infinite;
+}
+@keyframes rosePulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.1)}
+}
+
+/* Letter */
+#letterPage{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#111;
+    padding:30px;
+    overflow:auto;
+}
+.letter{
+    background:#f5e6c8;
+    color:#3b2b1a;
+    max-width:700px;
+    margin:auto;
+    padding:40px;
+    border-radius:15px;
+    font-family:'Great Vibes',cursive;
+    font-size:1.8em;
+}
+
+/* Glowing name */
+.glow-name{
+    color:gold;
+    font-size:2.2em;
+    text-shadow:0 0 10px gold,0 0 20px #ffcc66,0 0 40px #ff9966;
+    animation:glowPulse 2.5s infinite;
+}
+@keyframes glowPulse{
+    50%{text-shadow:0 0 20px gold,0 0 40px #ffd699,0 0 60px #ff9966}
+}
+
+/* Photos */
+#photos{
+    display:none;
+    text-align:center;
+    padding:20px;
+}
+.photos img{
+    width:30%;
+    margin:1%;
+    border-radius:15px;
+    box-shadow:0 0 20px gold;
+}
+.footer{
+    margin-top:30px;
+    font-size:1.5em;
+    color:gold;
+}
+
+/* Fireworks */
+.firework{
+    position:fixed;
+    font-size:2em;
+    animation:boom 1.5s ease-out forwards;
+}
+@keyframes boom{
+    to{transform:scale(3);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">SAAD AMOUR</div>
+<div class="moon"></div>
+
+<video autoplay muted loop>
+    <source src="her-video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<audio id="ocean" autoplay loop>
+    <source src="ocean.mp3">
+</audio>
+
+<audio id="music" loop>
+    <source src="romantic-music.mp3">
+</audio>
+
+<div class="card" id="card">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+</div>
+
+<div id="envelopePage">
+    <div class="envelope" onclick="openLetter()">
+        <div class="wax"></div>
+        <div class="rose" style="top:-30px;left:-20px">🌹</div>
+        <div class="rose" style="bottom:-30px;right:-20px">🌹</div>
+    </div>
+</div>
+
+<div id="letterPage">
+    <div class="letter">
+        <p>My Dearest <span class="glow-name">Marym</span>,</p>
+        <p>I find myself looking out the window, but the sunset has lost all its glow; the world just doesn't seem as bright without you by my side.</p>
+        <p>When we were together, those were truly the happiest times of my entire life.</p>
+        <p>Wherever you are, I hope these words find you. I am still here, and I am still yours.</p>
+        <p><strong>It’s always been you.</strong></p>
+        <p style="text-align:right">With all my love,<br>Saad amour</p>
+        <button onclick="showPhotos()">Continue 💖</button>
+    </div>
+</div>
+
+<div id="photos">
+    <div class="photos">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+    <div class="footer">
+        "I will always care you in my arms for the rest of my life"
+    </div>
+</div>
+
+<script>
+const noBtn=document.getElementById('no');
+noBtn.onmouseover=()=>{noBtn.style.left=Math.random()*80+'%';noBtn.style.top=Math.random()*80+'%'};
+
+function rainRoses(){
+    for(let i=0;i<35;i++){
+        let r=document.createElement('div');
+        r.innerHTML='🌹';
+        r.style.position='fixed';
+        r.style.left=Math.random()*100+'%';
+        r.style.top='-40px';
+        r.style.fontSize=(20+Math.random()*20)+'px';
+        r.style.animation=`roseFall ${3+Math.random()*2}s linear`;
+        document.body.appendChild(r);
+        setTimeout(()=>r.remove(),5000);
+    }
+}
+
+function heartBeat(){
+    if(navigator.vibrate) navigator.vibrate([150,100,150,100,200]);
+}
+
+document.getElementById('yes').onclick=()=>{
+    heartBeat();
+    document.getElementById('music').play();
+    rainRoses();
+    setTimeout(()=>{
+        card.style.display='none';
+        envelopePage.style.display='flex';
+    },1200);
+};
+
+function openLetter(){
+    envelopePage.style.display='none';
+    letterPage.style.display='block';
+}
+
+function fireworks(){
+    for(let i=0;i<25;i++){
+        let f=document.createElement('div');
+        f.className='firework';
+        f.innerHTML='🎇';
+        f.style.left=Math.random()*100+'%';
+        f.style.top=Math.random()*50+'%';
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1500);
+    }
+}
+
+function showPhotos(){
+    letterPage.style.display='none';
+    photos.style.display='block';
+    fireworks();
+}
+</script>
+
+</body>
+</html>
